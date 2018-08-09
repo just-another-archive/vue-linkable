@@ -11,6 +11,7 @@ export default (...props) => ({
     // setting default value and watchers for prop proxies
     props.forEach(prop => {
       const prox = `${prop}$`;
+      const event = prop === 'value' ? 'input' : 'update:' + prop;
 
       this[prox] = this[prop];
 
@@ -20,8 +21,9 @@ export default (...props) => ({
       });
 
       this.$watch(prox, (newVal, oldVal) => {
-        if (newVal !== oldVal)
-          this.$emit('update:' + prop, newVal)
+        if (newVal !== oldVal) {
+          this.$emit(event, newVal)
+        }
       })
     })
   },
