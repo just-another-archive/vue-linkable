@@ -1,6 +1,6 @@
 {
   "name": "vue-linkable",
-  "version": "1.3.0",
+  "version": "1.5.0",
   "description": "vuejs mixin to make prop to data easier",
   "main": "./dist/vue-linkable.min.js",
   "module": "./dist/vue-linkable.esm.js",
