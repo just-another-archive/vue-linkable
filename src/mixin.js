@@ -15,16 +15,8 @@ export default (...props) => ({
 
       this[prox] = this[prop];
 
-      this.$watch(prop, (newVal, oldVal) => {
-        if (newVal !== this[prox])
-          this[prox] = newVal
-      }, { deep: true });
-
-      this.$watch(prox, (newVal) => {
-        if (newVal !== this[prop]) {
-          this.$emit(event, newVal)
-        }
-      }, { deep: true })
+      this.$watch(prop, newVal => this[prox] = newVal, { deep: true });
+      this.$watch(prox, newVal => this.$emit(event, newVal), { deep: true })
     })
   },
 })
